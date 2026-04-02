@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClothCraft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="categorystyle.css">
+</head>
+<body>
+
+    <!-- SIDE NAV OVERLAY -->
+    <div class="sidenav-overlay" id="sidenavOverlay" onclick="closeSidenav()"></div>
+    <nav class="sidenav" id="sidenav">
+        <button class="sidenav-close" onclick="closeSidenav()">&#x2715;</button>
+        <ul>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Babies</a></li>
+        </ul>
+        <div class="sidenav-footer">
+            <span>© 2025 ClothCraft</span>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <a href="index.html"><h1 class="logo">ClothCraft</h1></a>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Babies</a></li>
+            </ul>
+        </nav>
+
+        <button class="menu-btn" id="menubutton" onclick="showSidenav()" aria-label="Open menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-text">
+            <p class="hero-eyebrow">New Collection</p>
+            <h2 class="hero-heading">Wear Your<br><em>Craft</em></h2>
+        </div>
+        <div class="hero-cta">
+            <a href="#" class="btn-outline">Try Our Designs</a>
+        </div>
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- MAIN SHOWCASE CAROUSEL -->
+    <section class="showcase-section">
+        <div class="section-label">
+            <span class="label-number">01</span>
+            <span class="label-text">Featured Looks</span>
+        </div>
+
+        <div class="carousel-track-wrapper">
+            <div class="carousel-track" id="carousel">
+                <!-- Image slots — mockups go here -->
+                <div class="carousel-card"><div class="card-placeholder"></div></div>
+                <div class="carousel-card"><div class="card-placeholder"></div></div>
+                <div class="carousel-card"><div class="card-placeholder"></div></div>
+                <div class="carousel-card"><div class="card-placeholder"></div></div>
+                <div class="carousel-card"><div class="card-placeholder"></div></div>
+                <div class="carousel-card"><div class="card-placeholder"></div></div>
+                <div class="carousel-card"><div class="card-placeholder"></div></div>
+                <div class="carousel-card"><div class="card-placeholder"></div></div>
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <div class="carousel-arrows">
+                <button class="arrow-btn" id="prevBtn" aria-label="Previous">&#10094;</button>
+                <button class="arrow-btn" id="nextBtn" aria-label="Next">&#10095;</button>
+            </div>
+            <div class="carousel-counter">
+                <span id="carouselCurrent">01</span>
+                <span class="counter-sep">/</span>
+                <span id="carouselTotal">08</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA STRIP -->
+    <div class="cta-strip">
+        <p class="cta-strip-text">Design something one of a kind.</p>
+        <a href="#" class="btn-solid">Create My Own</a>
+    </div>
+
+    <!-- STYLES / TEMPLATES CAROUSEL -->
+    <section class="styles-section">
+        <div class="section-label light">
+            <span class="label-number">02</span>
+            <span class="label-text">Choose a Style</span>
+        </div>
+
+        <div class="grid-track-wrapper">
+            <div class="grid-track" id="gridCarousel">
+                <!-- Style template slots -->
+                <div class="style-card">
+                    <div class="style-placeholder"></div>
+                    <p class="style-name">Cropped Plain Tee</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-placeholder"></div>
+                    <p class="style-name">Hoodie</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-placeholder"></div>
+                    <p class="style-name">Long Sleeves</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-placeholder"></div>
+                    <p class="style-name">Polo Shirt</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-placeholder"></div>
+                    <p class="style-name">T-Shirt</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-placeholder"></div>
+                    <p class="style-name">Tank Top</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-controls light">
+            <div class="carousel-arrows">
+                <button class="arrow-btn dark" id="gridPrev" aria-label="Previous">&#10094;</button>
+                <button class="arrow-btn dark" id="gridNext" aria-label="Next">&#10095;</button>
+            </div>
+            <div class="carousel-counter dark">
+                <span id="gridCurrent">01</span>
+                <span class="counter-sep">/</span>
+                <span id="gridTotal">06</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER STRIP -->
+    <footer>
+        <p class="footer-logo">ClothCraft</p>
+        <p class="footer-copy">© 2025 ClothCraft. All rights reserved.</p>
+    </footer>
+
+    <script src="category-script.js"></script>
+</body>
+</html>

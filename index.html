@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClothCraft</title>
+    <link rel="stylesheet" href="splash.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         SIDE NAVIGATION (hamburger menu)
+    ========================================== -->
+    <nav class="sidenav" id="sidenav">
+        <button class="sidenav-close" onclick="hidesidenav()">✕</button>
+        <ul>
+            <li><a href="#" onclick="hidesidenav()">Home</a></li>
+            <li><a href="#" onclick="hidesidenav()">Login</a></li>
+            <li><a href="#" onclick="hidesidenav()">Register</a></li>
+             <li><a href="#" onclick="hidesidenav()">Men</a></li>
+            <li><a href="#" onclick="hidesidenav()">Women</a></li>
+            <li><a href="#" onclick="hidesidenav()">Kids</a></li>
+            <li><a href="#" onclick="hidesidenav()">Babies</a></li>
+            <li><a href="#concept-section" onclick="hidesidenav()">How It Works</a></li>
+            <li><a href="#auth-section"    onclick="hidesidenav()">Join Us</a></li>
+            <li><a href="#contact-section" onclick="hidesidenav()">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="sidenav-overlay" id="sidenavOverlay" onclick="hidesidenav()"></div>
+
+    <!-- ==========================================
+         HEADER
+    ========================================== -->
+    <header id="mainHeader">
+        <a href="index.html"><h1>ClothCraft</h1></a> 
+
+        <div class="catandmenu">
+            <ul>
+                <li><a href="#">MEN</a></li>
+                <li><a href="#">WOMEN</a></li>
+                <li><a href="#">KIDS</a></li>
+                <li><a href="#">BABIES</a></li>
+            </ul>
+
+            <button id="menubutton" onclick="showsidenav()" aria-label="Open menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         MAIN CONTENT
+    ========================================== -->
+    <main>
+
+        <!-- ─── SECTION 1: HERO SLIDESHOW ─── -->
+        <article class="hero-section">
+
+            <!-- Background slideshow images -->
+            <div class="bg-slideshow">
+                <img src="assets/splashback.png"  class="slide active" alt="Hero slide 1">
+                <img src="assets/splashback2.jpg" class="slide"        alt="Hero slide 2">
+                <img src="assets/splashback3.jpg" class="slide"        alt="Hero slide 3">
+                <img src="assets/splashback4.png" class="slide"        alt="Hero slide 4">
+                <img src="assets/splashback5.png" class="slide"        alt="Hero slide 5">
+            </div>
+
+            <!-- Dot navigation -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot"        onclick="goToSlide(1)"></span>
+                <span class="dot"        onclick="goToSlide(2)"></span>
+                <span class="dot"        onclick="goToSlide(3)"></span>
+                <span class="dot"        onclick="goToSlide(4)"></span>
+            </div>
+
+            <!-- Hero headline & CTA -->
+            <div class="article1div1">
+                <h1 class="fade-up delay-1">DESIGN BY YOU,<br>CRAFTED FOR YOU!</h1>
+                <h3 class="fade-up delay-2">Your imagination is your only limit!</h3>
+                <br>
+                <a href="category-page.html">
+                    <button class="fade-up delay-3 btn-animate">Start Designing Now!</button>
+                </a>
+            </div>
+
+        </article>
+
+        <!-- ─── SECTION 2: HOW IT WORKS ─── -->
+        <article class="concept-section" id="concept-section">
+
+            <!-- Left: live preview video -->
+            <div class="video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/Vid/Preview.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Right: explanation text -->
+            <div class="concept-text">
+                <h1>HOW IT WORKS</h1>
+                <p>
+                    Use our intuitive design studio to bring any vision to life.
+                    Pick your garment, choose your fabric, add graphics, text, and colors —
+                    then see a real‑time preview before you order.
+                    No experience needed. Just your imagination.
+                </p>
+                <a href="#"><button class="try-btn">Try It Now</button></a>
+            </div>
+
+        </article>
+
+        <!-- ─── SECTION 3: JOIN US ─── -->
+        <article class="auth-section" id="auth-section">
+
+            <!-- Left: call-to-action text -->
+            <div class="auth-text">
+                <h1>JOIN US</h1>
+                <p>
+                    Create your own designs and bring your ideas to life.
+                    Join ClothCraft today and start customizing your style.
+                </p>
+                <div class="auth-buttons">
+                    <a href="#"><button class="register-btn">Register</button></a>
+                    <a href="#"><button class="login-btn">Login</button></a>
+                </div>
+            </div>
+
+            <!-- Right: community video -->
+            <div class="auth-video">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/Vid/Preview2.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </article>
+
+        <!-- ─── SECTION 4: CONTACT ─── -->
+        <article class="contact-section" id="contact-section">
+            <div class="contact-container">
+
+                <!-- Left: contact details -->
+                <div class="contact-info">
+                    <h1>CONTACT US</h1>
+                    <p>
+                        Have questions or want to collaborate?
+                        Send us a message and we'll get back to you as soon as possible.
+                    </p>
+                    <div class="contact-details">
+                        <p>📍 Santa Rosa, Philippines</p>
+                        <p>📧 clothcraft@email.com</p>
+                        <p>📞 +63 909 564 6326</p>
+                    </div>
+                </div>
+
+                <!-- Right: Formspree contact form -->
+                <form
+                    class="contact-form"
+                    action="https://formspree.io/f/xykbyloy"
+                    method="POST"
+                >
+                    <input   type="text"  name="name"    placeholder="Your Name"       required>
+                    <input   type="email" name="email"   placeholder="Your Email"      required>
+                    <textarea            name="message"  placeholder="Your Message..." required></textarea>
+                    <button  type="submit">Send Message</button>
+                </form>
+
+            </div>
+        </article>
+
+    </main>
+
+    <!-- ==========================================
+         FOOTER
+    ========================================== -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>ClothCraft</h2>
+                <p>DESIGN BY YOU! CRAFTED BY YOU!</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-socials">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https:facebook.com"
+                       target="_blank"
+                       rel="noopener"
+                       title="YouTube">
+                        🌐 Facebook
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ClothCraft. All rights reserved. Made with ♥love♥ in the Philippines.</p>
+        </div>
+    </footer>
+
+    <script src="splashpage.js"></script>
+</body>
+</html>
