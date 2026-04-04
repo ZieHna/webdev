@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClothCraft — Checkout</title>
+    <link rel="stylesheet" href="./CSS/header.css">
+    <style>
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #0a0a0a;
+            padding: 2rem 2.5rem;
+            gap: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 1rem;
+        }
+
+        .page-header h2 {
+            margin: 0;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        .page-header span {
+            font-size: 11px;
+            color: #333;
+            letter-spacing: 2px;
+        }
+
+        /* ── ITEMS GRID ── */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .item-card {
+            background: #0d0d0d;
+            border: 1px solid #1e1e1e;
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .item-card:hover {
+            border-color: #2a2a2a;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+        }
+
+        .item-preview {
+            background: #111;
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid #1a1a1a;
+            position: relative;
+        }
+
+        .item-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .item-preview .design-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(93, 202, 165, 0.15);
+            border: 1px solid rgba(93, 202, 165, 0.3);
+            color: #5DCAA5;
+            font-size: 9px;
+            letter-spacing: 2px;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .item-info {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .item-products {
+            font-size: 11px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .item-products span {
+            display: inline-block;
+            background: #1a1a1a;
+            border: 1px solid #252525;
+            border-radius: 4px;
+            padding: 2px 7px;
+            margin: 2px 2px 2px 0;
+            color: #888;
+        }
+
+        .item-date {
+            font-size: 10px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .item-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .item-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #5DCAA5;
+            letter-spacing: 1px;
+        }
+
+        .item-price small {
+            font-size: 10px;
+            color: #444;
+            font-weight: normal;
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        .remove-btn {
+            background: transparent;
+            border: 1px solid #2a2a2a;
+            border-radius: 7px;
+            color: #e24b4a;
+            font-size: 10px;
+            letter-spacing: 2px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .remove-btn:hover {
+            background: #1e1010;
+            border-color: #e24b4a;
+        }
+
+        /* ── EMPTY STATE ── */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            gap: 16px;
+            color: #333;
+            padding: 4rem;
+        }
+
+        .empty-state svg {
+            width: 48px;
+            height: 48px;
+            stroke: #2a2a2a;
+        }
+
+        .empty-state p {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .empty-state a button {
+            background: #5DCAA5;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            transition: background 0.2s;
+        }
+
+        .empty-state a button:hover { background: #4ab894; }
+
+        /* ── CHECKOUT SUMMARY ── */
+        .summary-bar {
+            background: #0d0d0d;
+            border: 1px solid #1e1e1e;
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .summary-left {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .summary-label {
+            font-size: 10px;
+            color: #444;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .summary-count {
+            font-size: 13px;
+            color: #888;
+            letter-spacing: 1px;
+        }
+
+        .summary-total {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .summary-total .total-label {
+            font-size: 10px;
+            color: #444;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .summary-total .total-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #5DCAA5;
+            letter-spacing: 2px;
+        }
+
+        .summary-total small {
+            font-size: 10px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .place-order-btn {
+            background: #5DCAA5;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 32px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(93, 202, 165, 0.25);
+            white-space: nowrap;
+        }
+
+        .place-order-btn:hover {
+            background: #4ab894;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(93, 202, 165, 0.35);
+        }
+
+        .price-note {
+            font-size: 10px;
+            color: #333;
+            letter-spacing: 1px;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        /* ── BACK LINK ── */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #444;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+
+        .back-link:hover { color: #aaa; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ClothCraft</h1>
+        <div class="catandmenu">
+            <ul>
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li>DESIGNS</li>
+            </ul>
+            <button id="menubutton" onclick="showmenu()">
+                <h1>JJ</h1>
+            </button>
+        </div>
+        <div class="menu" id="menu">
+            <a href=""><div class="menu-item">⚙ Settings</div></a>
+            <div class="divider"></div>
+            <a href=""><div class="menu-item danger">→ Logout</div></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div>
+                <a href="editor.html" class="back-link">← BACK TO EDITOR</a>
+                <h2 style="margin-top:8px;">CHECKOUT</h2>
+            </div>
+            <span id="item-count-label">— ITEMS</span>
+        </div>
+
+        <div class="items-grid" id="items-grid"></div>
+
+        <div class="empty-state" id="empty-state" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="8" y1="12" x2="16" y2="12"/>
+            </svg>
+            <p>No designed items yet</p>
+            <a href="editor.html"><button>← Go to Editor</button></a>
+        </div>
+
+        <div class="summary-bar" id="summary-bar">
+            <div class="summary-left">
+                <div class="summary-label">Order Summary</div>
+                <div class="summary-count" id="summary-count">0 item(s)</div>
+            </div>
+            <div class="summary-total">
+                <div class="total-label">Estimated Total</div>
+                <div class="total-price" id="total-price">₱0.00</div>
+                <small>Prices are estimates. Final price may vary.</small>
+            </div>
+            <button class="place-order-btn" onclick="placeOrder()">PLACE ORDER →</button>
+        </div>
+        <p class="price-note">* Base pricing: ₱350/item customization fee + product cost. All prices are approximate.</p>
+    </main>
+
+    <script>
+        function showmenu() {
+            document.getElementById('menu').classList.toggle('open');
+        }
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.catandmenu')) {
+                document.getElementById('menu').classList.remove('open');
+            }
+        });
+
+        // Pricing assumption per item
+        const BASE_PRICE = 350;
+
+        function formatDate(ts) {
+            return new Date(ts).toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
+
+        function formatPrice(p) {
+            return '₱' + p.toLocaleString('en-PH', { minimumFractionDigits: 2 });
+        }
+
+        function loadItems() {
+            const items = JSON.parse(localStorage.getItem('checkoutItems') || '[]');
+            const grid = document.getElementById('items-grid');
+            const emptyState = document.getElementById('empty-state');
+            const summaryBar = document.getElementById('summary-bar');
+            const summaryCount = document.getElementById('summary-count');
+            const totalPriceEl = document.getElementById('total-price');
+            const countLabel = document.getElementById('item-count-label');
+
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                emptyState.style.display = 'flex';
+                summaryBar.style.display = 'none';
+                countLabel.textContent = '— ITEMS';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            summaryBar.style.display = 'flex';
+            countLabel.textContent = items.length + (items.length === 1 ? ' ITEM' : ' ITEMS');
+            summaryCount.textContent = items.length + ' item(s)';
+
+            let total = 0;
+
+            items.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'item-card';
+
+                // estimate price: BASE + extra per product on canvas
+                const productCount = item.products ? item.products.length : 0;
+                const itemPrice = BASE_PRICE + (productCount * 50);
+                total += itemPrice;
+
+                const productsHTML = item.products && item.products.length > 0
+                    ? item.products.map(p => `<span>${p}</span>`).join('')
+                    : '<span>Custom design</span>';
+
+                card.innerHTML = `
+                    <div class="item-preview">
+                        <div class="design-badge">CUSTOM DESIGN</div>
+                        ${item.canvasImage
+                            ? `<img src="${item.canvasImage}" alt="Design ${idx + 1}" />`
+                            : `<div style="color:#333;font-size:11px;letter-spacing:2px;text-align:center;">DESIGN PREVIEW<br><span style="font-size:9px;color:#222;">Not available for local files</span></div>`
+                        }
+                    </div>
+                    <div class="item-info">
+                        <div class="item-products">${productsHTML}</div>
+                        <div class="item-date">${formatDate(item.timestamp)}</div>
+                        <div class="item-bottom">
+                            <div class="item-price">
+                                ${formatPrice(itemPrice)}
+                                <small>est. per item</small>
+                            </div>
+                            <button class="remove-btn" onclick="removeItem(${idx})">REMOVE</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            totalPriceEl.textContent = formatPrice(total);
+        }
+
+        function removeItem(idx) {
+            const items = JSON.parse(localStorage.getItem('checkoutItems') || '[]');
+            items.splice(idx, 1);
+            localStorage.setItem('checkoutItems', JSON.stringify(items));
+            loadItems();
+        }
+
+        function placeOrder() {
+            const items = JSON.parse(localStorage.getItem('checkoutItems') || '[]');
+            if (items.length === 0) {
+                alert('No items to order!');
+                return;
+            }
+            // Clear and confirm
+            if (confirm('Place your order? We will contact you to confirm.')) {
+                localStorage.removeItem('checkoutItems');
+                localStorage.removeItem('previewProducts');
+                localStorage.removeItem('addedProducts');
+                alert('🎉 Order placed! We will reach out to confirm your custom ClothCraft order.');
+                window.location.href = 'catalog.html';
+            }
+        }
+
+        window.onload = loadItems;
+    </script>
+</body>
+</html>

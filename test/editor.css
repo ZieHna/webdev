@@ -1,0 +1,453 @@
+main {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+    position: relative;
+    background: #0a0a0a;
+}
+
+/* ── EDITOR NAV ── */
+.editor-nav {
+    position: relative;
+    height: 100%;
+    width: 80px;
+    background-color: #000;
+    border-right: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-shrink: 0;
+    z-index: 10;
+    padding: 12px 0;
+}
+
+.editor-nav button {
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 76%;
+    gap: 5px;
+    height: 60px;
+    padding: 5px;
+    color: #555;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.15s, color 0.15s;
+    position: relative;
+}
+
+.editor-nav button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #aaa;
+}
+
+.editor-nav button.active {
+    background: rgba(93, 202, 165, 0.12);
+    color: #5DCAA5;
+    border: 1px solid rgba(93, 202, 165, 0.2);
+}
+
+.editor-nav button.active svg {
+    fill: #5DCAA5 !important;
+}
+
+.editor-nav button svg {
+    width: 22px;
+    height: 22px;
+    fill: #555;
+    transition: fill 0.15s, transform 0.2s;
+}
+
+.editor-nav button:hover svg {
+    fill: #aaa;
+    transform: scale(1.1);
+}
+
+.editor-nav button span {
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ── NAV PANEL ── */
+.nav-panel {
+    position: absolute;
+    height: 90%;
+    width: 250px;
+    background-color: #0d0d0d;
+    border-radius: 12px;
+    border: 1px solid #1e1e1e;
+    left: 88px;
+    top: 5%;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-8px);
+    z-index: 5;
+    box-shadow: 20px 0 60px rgba(0,0,0,0.5);
+}
+
+.nav-panel.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+}
+
+.panel-title {
+    color: #555;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 14px 16px;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.panel-layout {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #222 transparent;
+}
+
+.panel-layout::-webkit-scrollbar { width: 3px; }
+.panel-layout::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+
+/* ── PRODUCTS TABLE ── */
+.table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    scrollbar-width: thin;
+    scrollbar-color: #222 transparent;
+}
+
+.table-wrapper::-webkit-scrollbar { width: 3px; }
+.table-wrapper::-webkit-scrollbar-track { background: #0d0d0d; }
+.table-wrapper::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+
+.products-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.products-table tbody td {
+    padding: 4px;
+    vertical-align: top;
+}
+
+/* Product card in panel - clickable to add to canvas */
+.products-table .products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #888;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 6px;
+    border-radius: 8px;
+    border: 1px solid #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+    min-height: 110px;
+}
+
+.products-table .products:hover {
+    border-color: #5DCAA5;
+    background: #0a1a14;
+    color: #5DCAA5;
+}
+
+.products-table .products img {
+    height: 68px;
+    width: 68px;
+    object-fit: contain;
+    transition: transform 0.2s;
+}
+
+.products-table .products:hover img {
+    transform: scale(1.08);
+}
+
+.products-table .id-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.products-table .id-btn span {
+    font-size: 10px;
+    color: #555;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.products-table .products:hover .id-btn span {
+    color: #5DCAA5;
+}
+
+/* Hide the X button in panel */
+.products-table .products button {
+    display: none !important;
+}
+
+/* ── ELEMENTS ── */
+.elem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.elem-item {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 1px;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.elem-item:hover {
+    border-color: #5DCAA5;
+    background: #0a1a14;
+    color: #5DCAA5;
+}
+
+.elem-item svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+}
+
+/* ── TEXT ── */
+.text-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.text-item {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 14px 12px;
+    cursor: pointer;
+    color: #e8e8e8;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.text-item:hover {
+    border-color: #EF9F27;
+    background: #181000;
+}
+
+/* ── TOOLS ── */
+.tools-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.tool-item {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 1px;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.tool-item:hover,
+.tool-item.active {
+    border-color: #D85A30;
+    background: #180f00;
+    color: #D85A30;
+}
+
+.tool-item svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    stroke: currentColor;
+}
+
+.section-label {
+    font-size: 9px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 8px 0 4px;
+}
+
+/* ── COLORS ── */
+.color-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.color-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.15s;
+}
+
+.color-swatch:hover { transform: scale(1.25); }
+.color-swatch.selected { border-color: #5DCAA5; box-shadow: 0 0 0 1px #5DCAA5; }
+
+/* ── BRUSH ── */
+.brush-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brush-row label {
+    font-size: 10px;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+.brush-row input {
+    flex: 1;
+    accent-color: #5DCAA5;
+}
+
+.brush-row span {
+    font-size: 11px;
+    color: #666;
+    min-width: 20px;
+}
+
+/* ── UPLOAD ── */
+.upload-zone {
+    border: 1.5px dashed #222;
+    border-radius: 10px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #444;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.upload-zone:hover {
+    border-color: #378ADD;
+    background: #080f18;
+    color: #378ADD;
+}
+
+.upload-zone svg {
+    width: 26px;
+    height: 26px;
+    stroke: currentColor;
+}
+
+#file-input { display: none; }
+
+/* ── CANVAS AREA ── */
+.canvas {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0a;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.canvas canvas {
+    border-radius: 10px;
+    box-shadow:
+        0 0 0 1px #1e1e1e,
+        0 20px 80px rgba(0,0,0,0.6);
+}
+
+/* ── TOAST ── */
+.toast {
+    position: fixed;
+    top: calc(15vh + 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid #222;
+    color: #aaa;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 9999;
+}
+
+.toast.show { opacity: 1; }
+
+/* ── NEXT/CHECKOUT BUTTON ── */
+.checkout-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #5DCAA5;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    z-index: 9999;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(93, 202, 165, 0.3);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.checkout-btn:hover {
+    background: #4ab894;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(93, 202, 165, 0.4);
+}

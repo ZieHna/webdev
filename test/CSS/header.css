@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka One');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+* {
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ── HEADER ── */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    height: 15vh;
+    position: relative;
+}
+
+header h1 {
+    margin-left: 1rem;
+    letter-spacing: 2px;
+}
+
+header ul {
+    display: flex;
+    gap: 3rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header ul li {
+    position: relative;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+header ul li::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    border-radius: 10px;
+    bottom: -10px;
+    transition: width .5s ease-out;
+}
+
+header ul li:hover::before {
+    width: 110%;
+}
+
+.catandmenu {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-right: 1rem;
+}
+
+.catandmenu button {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    border-radius: 50%;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.catandmenu button h1 {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+}
+
+.menu {
+    position: absolute;
+    right: 0;
+    bottom: -15vh;
+    margin-right: 2%;
+    width: 160px;
+    color: rgb(241, 241, 241);
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 111;
+    transform: translateY(-6px) scale(0.97);
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.menu.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #ccc;
+    cursor: pointer;
+    transition: background 0.12s;
+}
+
+.menu-item:hover {
+    background: #1a1a1a;
+}
+
+.menu-item.danger {
+    color: #e24b4a;
+}
+
+.menu-item.danger:hover {
+    background: #1e1010;
+}
+
+.divider {
+    height: 1px;
+    background: #ddd;
+}

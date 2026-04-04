@@ -1,0 +1,328 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClothCraft</title>
+
+    <link rel="stylesheet" href="catalog.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+
+<body>
+    <header>
+        <h1>ClothCraft</h1>
+
+        <div class="catandmenu">
+            <ul>
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li>DESIGNS</li>
+            </ul>
+            <button id="menubutton" onclick="showmenu()">
+                <h1>JJ</h1>
+            </button>
+        </div>
+
+        <div class="menu" id="menu">
+            <a href="">
+                <div class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#e3e3e3">
+                        <path
+                            d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm146.5-204.5Q340-521 340-580t40.5-99.5Q421-720 480-720t99.5 40.5Q620-639 620-580t-40.5 99.5Q539-440 480-440t-99.5-40.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm100-95.5q47-15.5 86-44.5-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160q53 0 100-15.5ZM523-537q17-17 17-43t-17-43q-17-17-43-17t-43 17q-17 17-17 43t17 43q17 17 43 17t43-17Zm-43-43Zm0 360Z" />
+                    </svg>
+                    Account
+                </div>
+            </a>
+            <div class="divider"></div>
+            <a href="">
+                <div class="menu-item danger">→ Logout</div>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="">HOME</a> → <a href="">DESIGNS</a> → CATALOG
+        </div>
+
+        <div class="two-boxes">
+            <div class="box box-overview">
+                <p class="box-title">PRODUCT OVERVIEW</p>
+                <div class="overview-content">
+                    <table class="overview-table">
+                        <tbody id="preview">
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <div class="buttons">
+                    <a href="">
+                        <button>← GO BACK </button>
+                    </a>
+                    <a href="editor.html">
+                        <button> CUSTOMIZE NOW →</button>
+                    </a>
+
+                </div>
+            </div>
+
+
+            <div class="box box-catalog">
+                <p class="box-title">CATALOG</p>
+                <div class="filter-category">
+                    <button onclick="categorybtn(this, 1)">MEN</button>
+                    <button onclick="categorybtn(this, 2)">WOMEN</button>
+                    <button onclick="categorybtn(this, 3)">KIDS</button>
+                    <button onclick="categorybtn(this, 4)">BABIES</button>
+                </div>
+
+                <div class="catalog-table-wrap">
+                    <table class="catalog-table">
+                        <tbody id="men">
+                            <tr>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Men/long sleeve-3d.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Long Sleeve
+                                                <span class="prod-id" style="display:none;">M1</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Men/Polo-shirt-3d.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Polo Shirt
+                                                <span class="prod-id" style="display:none;">M2</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Men/tanktop-3d.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Tank Top
+                                                <span class="prod-id" style="display:none;">M3</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Men/tshirt-3d.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>T-Shirt
+                                                <span class="prod-id" style="display:none;">M4</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Men/vneck-3d.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>V-Neck
+                                                <span class="prod-id" style="display:none;">M5</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tbody id="women">
+                            <tr>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Women/Cropped Plain Tee.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Cropped Tee
+                                                <span class="prod-id" style="display:none;">W1</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Women/Hoodie.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Hoodie
+                                                 <span class="prod-id" style="display:none;">W2</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Women/Long sleeves.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Long Sleeve
+                                                 <span class="prod-id" style="display:none;">W3</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Women/Polo Shirt.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Polo Shirt
+                                                 <span class="prod-id" style="display:none;">W4</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Women/T-shirt.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>T-Shirt
+                                                 <span class="prod-id" style="display:none;">W5</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Women/Tank Top.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Tank Top
+                                                 <span class="prod-id" style="display:none;">W6</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tbody id="kids">
+                            <tr>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Kids/kids jacket.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Kiddie Jacket
+                                                 <span class="prod-id" style="display:none;">K1</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Kids/Kids polo.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Kiddie Polo
+                                                <span class="prod-id" style="display:none;">K2</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Kids/Kids tank top.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Kiddie Tank Top
+                                                <span class="prod-id" style="display:none;">K3</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Kids/Long Sleeve.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Kiddie Long Sleeve
+                                                <span class="prod-id" style="display:none;">K4</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody id="babies">
+                            <tr>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Babies/baby_clothes-removebg-preview.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Onesies
+                                                <span class="prod-id" style="display:none;">B1</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Babies/baby_clothes_long_sleeve-removebg-preview.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Baby Long Sleeve
+                                                <span class="prod-id" style="display:none;">B2</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Babies/baby_Dress-removebg-preview.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Baby Dress
+                                                <span class="prod-id" style="display:none;">B3</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="products">
+                                        <img src="./assets/Babies/baby_hoodie-removebg-preview.png">
+                                        <div class="id-btn">
+                                            <button onclick="addProduct(this)">ADD</button>
+                                            <span>Baby Hoodie
+                                                <span class="prod-id" style="display:none;">B4</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="JS/catalog.js"></script>
+
+</body>
+
+</html>
